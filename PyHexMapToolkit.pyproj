@@ -26,15 +26,19 @@
     <Compile Include="HexCalc.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HexSettlement.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\minsettlementtypes.csv" />
     <Content Include="data\minencountertypes.csv" />
     <Content Include="data\majencountertypes.csv" />
     <Content Include="data\primaryterraintypes.csv" />
-    <Content Include="data\settlementtypes.csv" />
+    <Content Include="data\majsettlementtypes.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
