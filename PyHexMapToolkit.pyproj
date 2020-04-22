@@ -22,11 +22,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HexFortress.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HexGen.py" />
     <Compile Include="HexCalc.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HexPrint.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HexSettlement.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HexNameGenerator.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -34,9 +43,11 @@
     <Folder Include="data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\merchantsservices.csv" />
     <Content Include="data\minsettlementtypes.csv" />
     <Content Include="data\minencountertypes.csv" />
     <Content Include="data\majencountertypes.csv" />
+    <Content Include="data\npcruler.csv" />
     <Content Include="data\primaryterraintypes.csv" />
     <Content Include="data\majsettlementtypes.csv" />
   </ItemGroup>

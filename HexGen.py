@@ -3,6 +3,7 @@
 
 import random 
 import HexCalc as hexc
+import HexPrint as hexp
 
 # Global/Argument set up - this will be changed later when I learn about arguments to a python script
 argTerrainType = "Grassland"
@@ -13,6 +14,8 @@ hex = {}
 hex['Major Encounter'] = hexc.GenerateMajorEncounter(argTerrainType)
 
 hex['Minor Encounters'] = hexc.GenerateMinorEncounters(argTerrainType)
+
+hexp.printHex(hex)
         
 #Debug
 #print (primaryTerrainTypes)
@@ -21,5 +24,5 @@ hex['Minor Encounters'] = hexc.GenerateMinorEncounters(argTerrainType)
 #for terrain in primaryTerrainTypes:
 #    print('For {}, chance of major is {}%, variable number of minor is {}'.format(terrain[0], int(terrain[1]*100), terrain[2]))
 #print(terrainType)
-print("Generated hex\n----------")
+print("\nGenerated hex\n----------")
 print(hex)

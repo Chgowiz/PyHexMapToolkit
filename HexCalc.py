@@ -1,5 +1,6 @@
 import random
 import HexSettlement as hexSettle
+import HexFortress as hexFort
 
 def GenerateMajorEncounter(sTerrainType):
     terrainType = GetPrimaryTerrainData(sTerrainType)
@@ -25,9 +26,12 @@ def GenerateMajorEncounter(sTerrainType):
         majEncType = majorEncounterTypes[str(rndMajType)]
         majEncDict['Type'] = majEncType
 
+        # Generate details about encounter
         majEncDetails = ""
         if majEncType == 'Settlement':
             majEncDetails = hexSettle.BuildSettlement()
+        elif majEncType == 'Fortress':
+            majEncDetails = hexFort.BuildFortress()
         else:
             majEncDetails = "Not yet defined."
 
@@ -60,11 +64,20 @@ def GenerateMinorEncounters(sTerrainType):
             minEncDict = {}
 
             #Determine Minor Encounter Type
-            rndMinType = random.randint(1,20)
-            minEncDict['Type'] = minorEncounterTypes[str(rndMinType)]
+            minEncType = minorEncounterTypes[str(random.randint(1,20))]
+            minEncDict['Type'] = minEncType
+
+            # Generate details about encounter
+            minEncDetails = ""
+            if minEncType == 'Settlement':
+                minEncDetails = hexSettle.BuildSettlement(True)
+            else:
+                minEncDetails = "Not yet defined."
+            
+            minEncDict['Details'] = minEncDetails
 
             #Add the individual Minor Encounter to the hex's Minor Encounter Dictionary
-            minEncountersDict[numMin] = minEncDict 
+            minEncountersDict[str(numMin)] = minEncDict 
 
     return minEncountersDict
 
@@ -75,5 +88,5 @@ def GetPrimaryTerrainData(sTerrainType):
         lines = inFile.readlines()
     for line in lines[1:]:
         values = line.strip().split(',')
-        primaryTerrainTypes[values[0]] = (float(values[1]), int(values[2]))
+        primaryTerrainTypes[values[0]] = float(values[1]), int(values[2])
     return primaryTerrainTypes[sTerrainType]

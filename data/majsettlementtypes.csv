@@ -1,11 +1,11 @@
-d10,Type,Population,PercentGoodsAvail
-1,Camp,30,0
-2,Thorpe,40,.05
-3,Hamlet,100,.15
-4,Hamlet,100,.15
-5,Hamlet,100,.15
-6,Village,450,.25
-7,Village,450,.25
-8,Village,450,.25
-9,Village,450,.25
-10,Town,4999,.50
+d10,Type,Population,PercentGoodsAvail,Commerce,Government,Ruler,RulerAlign,Resources,AvailModifiers,Feature
+1,Camp,30,0,Food,Nobility,Noble,Lawful,Very Poor,-.15,Nothing
+2,Thorpe,40,.05,Food,Nobility,Noble,Lawful,Poor,-.10,Fortress
+3,Hamlet,100,.15,Livestock,Nobility,Military/Marshal,Lawful,Fair,0,Walls
+4,Hamlet,100,.15,Livestock,Religious,Priests/esses,Lawful,Fair,0,Walls/Fortress
+5,Hamlet,100,.15,Textiles,Merchants Guild,Merchants,Neutral,Average,.05,Temple
+6,Village,450,.25,Services,Council,Elected,Neutral,Average,.05,Market
+7,Village,450,.25,Labor,Council,Elders,Neutral,Comfortable,.15,Garden/Park
+8,Village,450,.25,Industry,Council,Nobles/Wealthy,Neutral,Comfortable,.15,Lake
+9,Village,450,.25,Minerals,Council,Family/Clans,Neutral,Very Comfortable,.25,Art
+10,Town,4999,.50,Unique Resource,Sole Leader,NPC,Chaotic,Wealthy,.40,Famous Person
