@@ -1,4 +1,5 @@
 import random
+import HexNameGenerator as namegen
 
 def BuildSettlement(isMinor = False):
     settlementTypes = []
@@ -81,13 +82,16 @@ def BuildSettlement(isMinor = False):
 
         settlement['Ruler'] = "NPC({}, {} level, {})".format(cls,level,alignment)
 
+    # Get a random name from the Internet
+    settlement['Name'] = namegen.GenerateSettlementName()
+
     settlementStr = ""
-    settlementStr = """This settlement is a {}.
+    settlementStr = """{} is a {}.
     \t{} inhabitants. Commerce: {}. 
     \tResources are {}, {}% chance of specific good being available.
     \tGoverning body is {}, ruled by {}. Alignment: {}.
     \tThis {} is known for its {}
-    \tMerchants/Services available: \n""".format(settlement['Type'], settlement['Population'],settlement['Commerce'],
+    \tMerchants/Services available: \n""".format(settlement['Name'], settlement['Type'], settlement['Population'],settlement['Commerce'],
                                                       settlement['Resources'],settlement['PercentGoodsAvail'],
                                                       settlement['Government'],settlement['Ruler'],settlement['RulerAlignment'],
                                                       str(settlement['Type']).lower(), settlement['VillageFeature'])
