@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HexCharacter.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HexFortress.py">
       <SubType>Code</SubType>
     </Compile>
@@ -43,11 +46,16 @@
     <Folder Include="data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\fortresstables.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="data\merchantsservices.csv" />
     <Content Include="data\minsettlementtypes.csv" />
     <Content Include="data\minencountertypes.csv" />
     <Content Include="data\majencountertypes.csv" />
-    <Content Include="data\npcruler.csv" />
+    <Content Include="data\npc.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="data\primaryterraintypes.csv" />
     <Content Include="data\majsettlementtypes.csv" />
   </ItemGroup>

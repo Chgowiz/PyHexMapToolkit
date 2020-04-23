@@ -1,0 +1,93 @@
+{
+  "fortresstables": [
+    {
+      "name": "Fortress Type",
+      "dtype": 6,
+      "entries": {
+        "1": "Tower",
+        "2": "Tower",
+        "3": "Tower",
+        "4": "Keep",
+        "5": "Keep",
+        "6": "Castle"
+      }
+    },
+    {
+      "name": "Type Details",
+      "entries": {
+        "Tower": {
+          "floors": "1,4,2",
+          "guards": "1,4,0"
+        },
+        "Keep": {
+          "floors": "1,4,2",
+          "guards": "1,6,2"
+        },
+        "Castle": {
+          "floors": "3,4,0",
+          "guards": "1,8,0"
+        }
+      }
+    },
+    {
+      "name": "Fortress Ruler",
+      "dtype": 6,
+      "entries": {
+        "1": "Noble",
+        "2": "Noble",
+        "3": "Noble",
+        "4": "Noble",
+        "5": "NPC",
+        "6": "NPC"
+      }
+    },
+    {
+      "name": "Protecting",
+      "dtype": 10,
+      "entries": {
+        "1": "Village",
+        "2": "Village",
+        "3": "Village",
+        "4": "Crossing/Ford",
+        "5": "Resource",
+        "6": "Resource",
+        "7": "Strategic Location",
+        "8": "Dungeon",
+        "9": "Ruin/Artifact",
+        "10": "Secret"
+      }
+    },
+    {
+      "name": "Guards",
+      "dtype": 10,
+      "entries": {
+        "1": "Bandits",
+        "2": "Militia",
+        "3": "Knights",
+        "4": "Knights",
+        "5": "Men-at-arms",
+        "6": "Men-at-arms",
+        "7": "Men-at-arms",
+        "8": "Elves",
+        "9": "Littlelings",
+        "10": "Barbarians"
+      }
+    },
+    {
+      "name": "Majordomo",
+      "dtype": 10,
+      "entries": {
+        "1": "NPC",
+        "2": "NPC",
+        "3": "NPC",
+        "4": "Norman Man",
+        "5": "Normal Man",
+        "6": "Demihuman",
+        "7": "Humanoid",
+        "8": "Demonic",
+        "9": "Monster/Chaos",
+        "10": "Monster/Neutral"
+      }
+    }
+  ]
+}
