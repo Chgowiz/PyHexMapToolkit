@@ -1,5 +1,7 @@
 import random
 import HexNameGenerator as namegen
+import HexCharacter
+
 
 def BuildSettlement(isMinor = False, isVillage = False):
     settlementTypes = []
@@ -68,24 +70,8 @@ def BuildSettlement(isMinor = False, isVillage = False):
 
     # If ruler is NPC, determine type/level
     if settlement['Ruler'] == 'NPC':
-        npcClasses = []
-        npcAlignments = []
-        npcLevels = []
-        with open('data/NPCRuler.csv', "r") as inFile:
-            lines = inFile.readlines()
-        for line in lines[1:]:
-            values = line.strip().split(',')
-            npcClasses.append(values[1])
-            npcLevels.append(values[2])
-            npcAlignments.append(values[3])
-
-        cls = npcClasses[random.randint(0,9)]
-        alignment = npcAlignments[random.randint(0,9)]
-        if cls == 'Thief' and alignment == 'Lawful':
-            alignment = 'Neutral'
-        level = npcLevels[random.randint(0,9)]
-
-        settlement['Ruler'] = "NPC({}, {} level, {})".format(cls,level,alignment)
+        cls,level,alignment = HexCharacter.CreateNPC()
+        settlement['Ruler'] = "{} level {} ({})".format(level,cls,alignment)
 
     # Get a random name from the Internet
     settlement['Name'] = namegen.GenerateSettlementName()
