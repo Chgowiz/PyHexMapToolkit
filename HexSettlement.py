@@ -1,7 +1,7 @@
 import random
 import HexNameGenerator as namegen
 
-def BuildSettlement(isMinor = False):
+def BuildSettlement(isMinor = False, isVillage = False):
     settlementTypes = []
     #Commerce,Government,Resources,AvailModifier
     commerceTypes = []
@@ -28,7 +28,12 @@ def BuildSettlement(isMinor = False):
         resourceTypes.append((values[8], values[9]))
         featureTypes.append(values[10])
 
-    settlement['Type'],settlement['Population'],strPctGoodsAvail = settlementTypes[random.randint(0,9)]
+    # This param forces us to do a village, so I get all the village items and take the first one. 
+    if not isVillage:
+        settlement['Type'],settlement['Population'],strPctGoodsAvail = settlementTypes[random.randint(0,9)]
+    else:
+        settlement['Type'],settlement['Population'],strPctGoodsAvail = [item for item in settlementTypes if item[0] == 'Village'][0]
+
     settlement['Commerce'] = commerceTypes[random.randrange(0,9)]
     settlement['Government'], settlement['Ruler'] = govtTypes[random.randrange(0,9)]
     settlement['RulerAlignment'] = rulerAlignment[random.randrange(0,9)]
