@@ -1,0 +1,53 @@
+{
+  "npctables": [
+    {
+      "name": "Class",
+      "dtype": 10,
+      "entries": {
+        "1": "Fighter",
+        "2": "Fighter",
+        "3": "Fighter",
+        "4": "Fighter",
+        "5": "Fighter",
+        "6": "Fighter",
+        "7": "Fighter",
+        "8": "Thief",
+        "9": "Thief",
+        "10": "Magic User"
+      }
+    },
+    {
+      "name": "Level",
+      "dtype": 10,
+      "entries": {
+        "1": "9th",
+        "2": "9th",
+        "3": "9th",
+        "4": "9th",
+        "5": "9th",
+        "6": "9th",
+        "7": "9th",
+        "8": "10th",
+        "9": "10th",
+        "10": "10th"
+      }
+    },
+    {
+      "name": "Alignment",
+      "dtype": 10,
+      "entries": {
+        "1": "Lawful",
+        "2": "Lawful",
+        "3": "Lawful",
+        "4": "Lawful",
+        "5": "Neutral",
+        "6": "Neutral",
+        "7": "Neutral",
+        "8": "Neutral",
+        "9": "Neutral",
+        "10": "Chaotic"
+      }
+    }
+  ]
+}
+
