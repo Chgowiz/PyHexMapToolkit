@@ -5,23 +5,6 @@ import dice
 def CreateNPC():
     """Returns a tuple representing NPC (class, level, alignment)"""
 
-    #npcClasses = []
-    #npcAlignments = []
-    #npcLevels = []
-    #with open('data/NPCRuler.csv', "r") as inFile:
-    #    lines = inFile.readlines()
-    #for line in lines[1:]:
-    #    values = line.strip().split(',')
-    #    npcClasses.append(values[1])
-    #    npcLevels.append(values[2])
-    #    npcAlignments.append(values[3])
-
-    #cls = npcClasses[random.randint(0,9)]
-    #alignment = npcAlignments[random.randint(0,9)]
-    #if cls == 'Thief' and alignment == 'Lawful':
-    #    alignment = 'Neutral'
-    #level = npcLevels[random.randint(0,9)]
-
     strJson = ""
 
     with open("data/npc.json", "r") as inFile:

@@ -1,12 +1,29 @@
 import requests
 import random
 
-def GenerateSettlementName():
+def GetSettlementName():
+    return GetDonjonName('English Town')
+
+
+def GetMaleName(firstOnly = True):
+    name = GetDonjonName('English Male')
+    if firstOnly:
+        name = name.split()[0]
+    return name
+
+
+def GetFemaleName(firstOnly = True):
+    name = GetDonjonName('English Female')
+    if firstOnly:
+        name = name.split()[0]
+    return name
+
+
+def GetDonjonName(nameType):
     name = "None"
-    queryd = {'type': 'English Town', 'n': '1'}
+    queryd = {'type': nameType, 'n': '1'}
     url = 'https://donjon.bin.sh/name/rpc-name.fcgi'
     page = requests.get(url, params=queryd)
     if page.status_code == 200:
-        # We are returning only 1 name. Strip the text of all whitespace
         name = page.text.strip()
     return name

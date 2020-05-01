@@ -74,7 +74,7 @@ def BuildSettlement(isMinor = False, isVillage = False):
         settlement['Ruler'] = "{} level {} ({})".format(level,cls,alignment)
 
     # Get a random name from the Internet
-    settlement['Name'] = namegen.GenerateSettlementName()
+    settlement['Name'] = namegen.GetSettlementName()
 
     settlementStr = ""
     settlementStr = """{} is a {}.
