@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="hex.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HexCharacter.py">
       <SubType>Code</SubType>
     </Compile>
@@ -29,9 +32,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HexGen.py" />
-    <Compile Include="HexCalc.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="HexPrint.py">
       <SubType>Code</SubType>
     </Compile>

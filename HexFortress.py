@@ -4,7 +4,7 @@ import HexSettlement
 import HexCharacter 
 
 
-def BuildFortress(isMinor = False):
+def BuildFortress():
     strFortress = ""
     strJson = ""
 
@@ -52,12 +52,13 @@ def BuildFortress(isMinor = False):
     n, s, mod = tuple(table['entries'][fType]['guards'].split(','))
     fNumGuards = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
 
-    fRuler = 'NPC'
-
     # If ruler or majordomo is NPC - what are details of NPC
     if fRuler == 'NPC':
         sClass, sLevel, sAlign = HexCharacter.CreateNPC()
         fRuler = "{} level {} ({})".format(sLevel, sClass, sAlign)
+    # If ruler is Noble - what are the details of the noble
+    elif fRuler == 'Noble':
+        fRuler += ' (NEED DETAILS)'
 
     if fMajorDomo == 'NPC':
         sClass, sLevel, sAlign = HexCharacter.CreateNPC()
@@ -75,3 +76,8 @@ def BuildFortress(isMinor = False):
     return strFortress
 
 
+def BuildMinorFort():
+    # a small fortified holding 
+    # noble, military leader, fighting order, or adventurer
+
+    return "Minor Fort - DETAILS NEEDED"
