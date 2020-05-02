@@ -1,8 +1,9 @@
 import json
 import dice
+import namegenerator
 
 
-def CreateNPC():
+def create_npc():
     """Returns a tuple representing NPC (class, level, alignment)"""
 
     strJson = ""
@@ -28,5 +29,11 @@ def CreateNPC():
     d = table['dtype']
     npcAlign = table['entries'][str(sum(dice.roll('1d' + str(d))))]
 
-    return (npcClass, npcLevel, npcAlign)
+    npc_name = ""
+    if int(sum(dice.roll('1d2'))) == 1:
+        npc_name = namegenerator.get_female_name()
+    else:
+        npc_name = namegenerator.get_male_name()
+
+    return (npc_name, npcClass, npcLevel, npcAlign)
 

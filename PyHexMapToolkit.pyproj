@@ -5,7 +5,7 @@
     <ProjectGuid>60d76d40-f6a5-4990-8f60-3833aa107f6d</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>HexGen.py</StartupFile>
+    <StartupFile>genhex.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,20 +25,20 @@
     <Compile Include="hex.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HexCharacter.py">
+    <Compile Include="charactergenerator.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HexFortress.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HexGen.py" />
+    <Compile Include="genhex.py" />
     <Compile Include="HexPrint.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HexSettlement.py">
+    <Compile Include="namegenerator.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HexNameGenerator.py">
+    <Compile Include="settlement.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

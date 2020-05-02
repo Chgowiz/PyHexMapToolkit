@@ -10,7 +10,6 @@ argTerrainType = "Grassland"
 
 # Build the hex and determine encounters
 newHex = hex.Hex(argTerrainType)
-newHex.buildHex()
 
 #hexp.printHex(hex)
         
