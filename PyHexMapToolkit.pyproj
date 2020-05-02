@@ -28,7 +28,7 @@
     <Compile Include="charactergenerator.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HexFortress.py">
+    <Compile Include="fortress.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="genhex.py" />

@@ -1,5 +1,6 @@
 import random
 import settlement
+import fortress
 
 class Hex:
     """description of class"""
@@ -60,14 +61,14 @@ class Hex:
         if random.randint(1,100) <= int(self.terrain_table[0] * 100):
         
             #Determine Major Encounter Type - randint(x,y) controls which type(s) get gen'd
-            maj_enc_type = self.major_encounter_types[str(random.randint(1,1))]
+            maj_enc_type = self.major_encounter_types[str(random.randint(1,2))]
 
             # Generate details about encounter
             maj_enc_details = ""
             if maj_enc_type == 'Settlement':
                 maj_enc_details = str(settlement.Settlement())
-            #elif maj_enc_type == 'Fortress':
-            #    maj_enc_details = hexFort.BuildFortress()
+            elif maj_enc_type == 'Fortress':
+                maj_enc_details = str(fortress.Fortress())
             else:
                 maj_enc_details = "Not yet defined."
 
@@ -92,17 +93,16 @@ class Hex:
                 enc_dict = {}
                 
                 #Determine Minor Encounter Type - randint(1,20) drives which type is chosen. 
-                enc_dict['Type'] = self.minor_encounter_types[str(random.randint(1,1))]
+                enc_dict['Type'] = self.minor_encounter_types[str(random.randint(1,2))]
 
                 # Generate details about encounter
                 min_enc_details = ""
                 if enc_dict['Type'] == 'Settlement':
                     enc_dict['Details'] = str(settlement.Settlement(is_minor=True))
-                #elif min_enc_dict['Type'] == 'Fort':
-                #    enc_dict['Details'] = hexFort.BuildMinorFort()
+                elif enc_dict['Type'] == 'Fort':
+                    enc_dict['Details'] = str(fortress.Fortress(is_minor=True))
                 else:
                     enc_dict['Details'] = "Not yet defined."
-            
 
                 #Add the individual Minor Encounter to the hex's Minor Encounter Dictionary
                 min_enc_dict[str(num_minor_encs)] = enc_dict 
