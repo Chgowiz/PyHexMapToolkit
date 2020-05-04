@@ -12,10 +12,7 @@ class Fortress:
         self.fortress_majordomo = ""
         self.fortress_num_floors = 0
         self.fortress_num_guards = 0
-        if not is_minor:
-            self.build()
-        else:
-            self.build_minor()
+        self.build(is_minor)
 
 
     def __str__(self):
@@ -31,12 +28,12 @@ class Fortress:
 
         # If fortress protects settlement - what are details of settlement (a village)
         if self.fortress_protects == 'Village':
-            fortress_str += "\n\t" + str(settlement.Settlement(isVillage = True))
+            fortress_str += "\n\t" + str(settlement.Settlement(is_village = True))
 
         return fortress_str
 
 
-    def build(self):
+    def build(self, is_minor):
         json_str = ""
 
         with open("data/fortresstables.json", "r") as inFile:
@@ -47,7 +44,12 @@ class Fortress:
         tables = json.loads(json_str)['fortresstables']
 
         # Type of fortress
-        table = [tbl for tbl in tables if tbl['name'] == 'Fortress Type'][0]
+        if is_minor:
+            desired_type = 'Minor Fortress Type'
+        else:
+            desired_type = 'Major Fortress Type'
+
+        table = [tbl for tbl in tables if tbl['name'] == desired_type][0]
         d = table['dtype']
         self.fortress_type = table['entries'][str(sum(dice.roll('1d' + str(d))))]
 
@@ -72,13 +74,22 @@ class Fortress:
         self.fortress_majordomo = table['entries'][str(sum(dice.roll('1d' + str(d))))]
 
         # How many floors/guards for fortress
-        table = [tbl for tbl in tables if tbl['name'] == 'Type Details'][0]
+        if is_minor:
+            table = [tbl for tbl in tables if tbl['name'] == 'Minor Type Details'][0]
 
-        n, s, mod = tuple(table['entries'][self.fortress_type]['floors'].split(','))
-        self.fortress_num_floors = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
+            n, s, mod = tuple(table['floors'].split(','))
+            self.fortress_num_floors = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
 
-        n, s, mod = tuple(table['entries'][self.fortress_type]['guards'].split(','))
-        self.fortress_num_guards = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
+            n, s, mod = tuple(table['guards'].split(','))
+            self.fortress_num_guards = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
+        else:
+            table = [tbl for tbl in tables if tbl['name'] == 'Major Type Details'][0]
+
+            n, s, mod = tuple(table['entries'][self.fortress_type]['floors'].split(','))
+            self.fortress_num_floors = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
+
+            n, s, mod = tuple(table['entries'][self.fortress_type]['guards'].split(','))
+            self.fortress_num_guards = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
 
         # If ruler or majordomo is NPC - what are details of NPC
         if self.fortress_ruler == 'NPC':
@@ -91,10 +102,3 @@ class Fortress:
         if self.fortress_majordomo == 'NPC':
             name, cls, level, align = chargen.create_npc()
             self.fortress_majordomo = "{}, {} level {} ({})".format(name, cls, level, align)
-
-
-    def build_minor(self):
-        # a small fortified holding 
-        # noble, military leader, fighting order, or adventurer
-
-        self.fortress_type = "Minor Fort - DETAILS NEEDED"

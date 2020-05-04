@@ -28,7 +28,7 @@ class Hex:
 
 
     def load_tables(self, terrain_type):
-        # was - majorEncounterTypes = {'1':('Settlement'), '2':('Fortress'), '3':('Religious'), '4':('Ruin'), '5':('Monster'), '6':('Natural')}
+        # was - majorEncounterTypes = {'1':('Settlement'), '2':('Fortress'), '3':('Ruin'), '4':('Monster'), '5':('Religious'), '6':('Natural')}
         with open("data/majencountertypes.csv", "r") as inFile:
             lines = inFile.readlines()
         for line in lines[1:]:
@@ -61,7 +61,7 @@ class Hex:
         if random.randint(1,100) <= int(self.terrain_table[0] * 100):
         
             #Determine Major Encounter Type - randint(x,y) controls which type(s) get gen'd
-            maj_enc_type = self.major_encounter_types[str(random.randint(1,2))]
+            maj_enc_type = self.major_encounter_types[str(random.randint(1,3))]
 
             # Generate details about encounter
             maj_enc_details = ""
@@ -69,6 +69,8 @@ class Hex:
                 maj_enc_details = str(settlement.Settlement())
             elif maj_enc_type == 'Fortress':
                 maj_enc_details = str(fortress.Fortress())
+            elif maj_enc_type == 'Ruin':
+                maj_enc_details = "RUINS NOT YET DEFINED"
             else:
                 maj_enc_details = "Not yet defined."
 
@@ -93,7 +95,7 @@ class Hex:
                 enc_dict = {}
                 
                 #Determine Minor Encounter Type - randint(1,20) drives which type is chosen. 
-                enc_dict['Type'] = self.minor_encounter_types[str(random.randint(1,2))]
+                enc_dict['Type'] = self.minor_encounter_types[str(random.randint(1,3))]
 
                 # Generate details about encounter
                 min_enc_details = ""
@@ -101,6 +103,8 @@ class Hex:
                     enc_dict['Details'] = str(settlement.Settlement(is_minor=True))
                 elif enc_dict['Type'] == 'Fort':
                     enc_dict['Details'] = str(fortress.Fortress(is_minor=True))
+                elif enc_dict['Type'] == 'Ruin':
+                    enc_dict['Details'] = "RUINS NOT YET DEFINED"
                 else:
                     enc_dict['Details'] = "Not yet defined."
 

@@ -1,7 +1,7 @@
 {
   "fortresstables": [
     {
-      "name": "Fortress Type",
+      "name": "Major Fortress Type",
       "dtype": 6,
       "entries": {
         "1": "Tower",
@@ -13,7 +13,19 @@
       }
     },
     {
-      "name": "Type Details",
+      "name": "Minor Fortress Type",
+      "dtype": 6,
+      "entries": {
+        "1": "Tower House",
+        "2": "Peel Tower",
+        "3": "Bastle House",
+        "4": "Fortified House",
+        "5": "Defensible Manor",
+        "6": "Keep"
+      }
+    },
+    {
+      "name": "Major Type Details",
       "entries": {
         "Tower": {
           "floors": "1,4,2",
@@ -28,6 +40,11 @@
           "guards": "1,8,0"
         }
       }
+    },
+    {
+      "name": "Minor Type Details",
+      "floors": "1,4,0",
+      "guards": "1,4,0"
     },
     {
       "name": "Fortress Ruler",
