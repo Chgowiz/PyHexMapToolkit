@@ -23,8 +23,13 @@ def query_donjon_service(nameType):
     name = "None"
     queryd = {'type': nameType, 'n': '1'}
     url = 'https://donjon.bin.sh/name/rpc-name.fcgi'
-    page = requests.get(url, params=queryd)
-    if page.status_code == 200:
-        name = page.text.strip()
+
+    try:
+        page = requests.get(url, params=queryd)
+        if page.status_code == 200:
+            name = page.text.strip()
+    except Exception:
+        name = "None"
+
     return name
 
