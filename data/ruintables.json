@@ -1,0 +1,278 @@
+{
+  "ruintables": [
+    {
+      "name": "Ruins Type",
+      "dtype": 20,
+      "entries": {
+        "1": "Camp",
+        "2": "Hamlet",
+        "3": "Village",
+        "4": "Tower",
+        "5": "Keep",
+        "6": "Castle",
+        "7": "Tomb",
+        "8": "Temple",
+        "9": "Fortified House",
+        "10": "Ancient",
+        "11": "Palace",
+        "12": "Foundry/Forge/Craft Shop",
+        "13": "Laboratory/Workshop",
+        "14": "Library/Archive",
+        "15": "Prison",
+        "16": "Dungeon",
+        "17": "Vault/Treasury",
+        "18": "Shrine",
+        "19": "Monument",
+        "20": "Unknown"
+      }
+    },
+    {
+      "name": "Backstory",
+      "dtype": 10,
+      "entries": {
+        "1": "Magically untouched/sturdy",
+        "2": "Oppressive evil aura",
+        "3": "Uplifting good aura",
+        "4": "Illusion",
+        "5": "Sacked",
+        "6": "Plague/Infestation",
+        "7": "Natural disaster",
+        "8": "Curse/Bad Magic",
+        "9": "Angry Gods",
+        "10": "Abandoned"
+      }
+    },
+    {
+      "name": "Condition",
+      "dtype": 12,
+      "entries": {
+        "1": "Ancient & Unsafe",
+        "2": "Bug/Rat/Slime Infested",
+        "3": "Nature Damaged",
+        "4": "Dirty & Diseased",
+        "5": "Rotting/Collapsing",
+        "6": "Sturdy and untouched",
+        "7": "Overgrown",
+        "8": "Flooded",
+        "9": "Haunted or Cursed",
+        "10": "A deathtrap",
+        "11": "Rubble remains",
+        "12": "Illusion"
+      }
+    },
+    {
+      "name": "Defenses",
+      "dtype": 12,
+      "entries": {
+        "1": "Untamed wilderness",
+        "2": "Rumors, false sightings, tall tales",
+        "3": "Difficult/Deadly terrain (natural)",
+        "4": "Difficult/Deadly terrain (unnatural)",
+        "5": "Clandestine group dedicated to secrecy",
+        "6": "Powerful/malignant curse vs all seekers",
+        "7": "Illusion keeping it hidden",
+        "8": "Inaccessible w/out key/password/spell",
+        "9": "Only appears at certain intervals",
+        "10": "Unique, singular, powerful guardian",
+        "11": "The condition of the ruin is extreme.",
+        "12": "Defenseless."
+      }
+    },
+    {
+      "name": "Contents",
+      "dtype": 100,
+      "entries": [
+        {
+          "low": 1,
+          "high": 10,
+          "value": "Nothing"
+        },
+        {
+          "low": 11,
+          "high": 15,
+          "value": "Traps"
+        },
+        {
+          "low": 16,
+          "high": 20,
+          "value": "Traps, Monsters"
+        },
+        {
+          "low": 21,
+          "high": 25,
+          "value": "Traps, Treasure"
+        },
+        {
+          "low": 26,
+          "high": 30,
+          "value": "Treasure"
+        },
+        {
+          "low": 31,
+          "high": 35,
+          "value": "Traps, Treasure, Monsters"
+        },
+        {
+          "low": 36,
+          "high": 40,
+          "value": "Tricks"
+        },
+        {
+          "low": 41,
+          "high": 45,
+          "value": "Tricks, Treasure"
+        },
+        {
+          "low": 46,
+          "high": 50,
+          "value": "Tricks, Treasure, Traps"
+        },
+        {
+          "low": 51,
+          "high": 55,
+          "value": "Tricks, Traps"
+        },
+        {
+          "low": 56,
+          "high": 60,
+          "value": "Tricks, Treasure, Traps, Monsters"
+        },
+        {
+          "low": 61,
+          "high": 65,
+          "value": "Tricks, Monsters"
+        },
+        {
+          "low": 66,
+          "high": 70,
+          "value": "Treasure, Monsters"
+        },
+        {
+          "low": 71,
+          "high": 75,
+          "value": "Monsters"
+        },
+        {
+          "low": 76,
+          "high": 80,
+          "value": "Traps, Treasure, Monsters"
+        },
+        {
+          "low": 81,
+          "high": 85,
+          "value": "Treasure"
+        },
+        {
+          "low": 86,
+          "high": 90,
+          "value": "Traps, Treasure"
+        },
+        {
+          "low": 91,
+          "high": 95,
+          "value": "Nothing"
+        },
+        {
+          "low": 96,
+          "high": 97,
+          "value": "Map"
+        },
+        {
+          "low": 98,
+          "high": 98,
+          "value": "Artifact"
+        },
+        {
+          "low": 99,
+          "high": 99,
+          "value": "Curse"
+        },
+        {
+          "low": 100,
+          "high": 100,
+          "value": "God/Goddess"
+        }
+      ]
+    },
+    {
+      "name": "Primary Occupants",
+      "dtype": 10,
+      "entries": {
+        "1": "No one. Any monsters are wandering",
+        "2": "Natural animals",
+        "3": "Tribal/savage humanoids",
+        "4": "Unnatural/Supernatural monsters",
+        "5": "Degenerate descendants of original occupants",
+        "6": "Descedants of service staff, waiting for occupants' return",
+        "7": "Unquiet spirits of original inhabitants",
+        "8": "Destroyers of original location",
+        "9": "Original inhabitants, long though dead",
+        "10": "Secret/clandestine group"
+      }
+    },
+    {
+      "name": "Major Monster",
+      "dtype": 10,
+      "entries": {
+        "1": "NPC Fighter",
+        "2": "NPC Mage",
+        "3": "NPC Thief",
+        "4": "NPC Cleric",
+        "5": "Demon",
+        "6": "NPC Humanoid",
+        "7": "Dragon",
+        "8": "Major Undead",
+        "9": "None/Reroll *2",
+        "10": "None/Reroll *3"
+      }
+    },
+    {
+      "name": "Minions",
+      "dtype": 10,
+      "entries": {
+        "1": "Bandits",
+        "2": "Humanoids",
+        "3": "Lesser Demons",
+        "4": "Demihumans",
+        "5": "Constructs",
+        "6": "Lowlifes (fungal/insects/plants)",
+        "7": "Animals",
+        "8": "Undead",
+        "9": "Weird",
+        "10": "None"
+      }
+    },
+    {
+      "name": "Dangers",
+      "dtype": 10,
+      "entries": {
+        "1": "Structures could collapse if disturbed.",
+        "2": "Poisonous plants/animals abound.",
+        "3": "environment, atmosphere and/or climate. Toxic, extreme and deadly.",
+        "4": "accidental or natural hazards. Random, natural, deadly traps.",
+        "5": "engineered, unnatural hazards. Deadly mechanical or magical traps.",
+        "6": "a physical malady. Plague or curse that sickens, kills or changes.",
+        "7": "a psychological malady. The ruins eat away at the minds of those who enter.",
+        "8": "strange physics. Physical qualities of the ruins differ from normal.",
+        "9": "strange magic. Wild, dead or disruption of normal magic.",
+        "10": "None"
+      }
+    },
+    {
+      "name": "Wonders",
+      "dtype": 10,
+      "entries": {
+        "1": "Vast mundane wealth (gold, jewels, items)",
+        "2": "Access to power (kingship, weapons/arms for army, etc)",
+        "3": "Vast unusual/magical wealth (components, minerals, holy water, etc)",
+        "4": "Access to unusual/magical power (ancient tech, spells, etc)",
+        "5": "Ancient artifact/weapon of benevolent power that can be taken.",
+        "6": "Ancient artifact/weapon of malevolent power that can be taken.",
+        "7": "Ancient artifact/weapon of benevolent power that cannot be taken.",
+        "8": "Ancient artifact/weapon of malevolent power that cannot be taken.",
+        "9": "Lie. Reroll *1",
+        "10": "Curse. Reroll *1"
+      }
+    }
+  ]
+}

@@ -35,7 +35,13 @@
     <Compile Include="HexPrint.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="jsonrollabletable.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="namegenerator.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ruin.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="settlement.py">
@@ -46,6 +52,7 @@
     <Folder Include="data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\ruintables.json" />
     <Content Include="data\fortresstables.json">
       <SubType>Code</SubType>
     </Content>

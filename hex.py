@@ -1,6 +1,7 @@
 import random
 import settlement
 import fortress
+import ruin
 
 class Hex:
     """description of class"""
@@ -61,7 +62,7 @@ class Hex:
         if random.randint(1,100) <= int(self.terrain_table[0] * 100):
         
             #Determine Major Encounter Type - randint(x,y) controls which type(s) get gen'd
-            maj_enc_type = self.major_encounter_types[str(random.randint(1,3))]
+            maj_enc_type = self.major_encounter_types[str(random.randint(3,3))]
 
             # Generate details about encounter
             maj_enc_details = ""
@@ -70,7 +71,7 @@ class Hex:
             elif maj_enc_type == 'Fortress':
                 maj_enc_details = str(fortress.Fortress())
             elif maj_enc_type == 'Ruin':
-                maj_enc_details = "RUINS NOT YET DEFINED"
+                maj_enc_details = str(ruin.Ruin('data/ruintables.json'))
             else:
                 maj_enc_details = "Not yet defined."
 
