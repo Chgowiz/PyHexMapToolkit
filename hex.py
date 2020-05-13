@@ -62,14 +62,14 @@ class Hex:
         if random.randint(1,100) <= int(self.terrain_table[0] * 100):
         
             #Determine Major Encounter Type - randint(x,y) controls which type(s) get gen'd
-            maj_enc_type = self.major_encounter_types[str(random.randint(3,3))]
+            maj_enc_type = self.major_encounter_types[str(random.randint(2,2))]
 
             # Generate details about encounter
             maj_enc_details = ""
             if maj_enc_type == 'Settlement':
                 maj_enc_details = str(settlement.Settlement())
             elif maj_enc_type == 'Fortress':
-                maj_enc_details = str(fortress.Fortress())
+                maj_enc_details = str(fortress.Fortress("data/fortresstables.json"))
             elif maj_enc_type == 'Ruin':
                 maj_enc_details = str(ruin.Ruin('data/ruintables.json'))
             else:
@@ -103,7 +103,7 @@ class Hex:
                 if enc_dict['Type'] == 'Settlement':
                     enc_dict['Details'] = str(settlement.Settlement(is_minor=True))
                 elif enc_dict['Type'] == 'Fort':
-                    enc_dict['Details'] = str(fortress.Fortress(is_minor=True))
+                    enc_dict['Details'] = str(fortress.Fortress("data/fortresstables.json", is_minor=True))
                 elif enc_dict['Type'] == 'Ruin':
                     enc_dict['Details'] = "RUINS NOT YET DEFINED"
                 else:

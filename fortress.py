@@ -1,10 +1,14 @@
 import json
 import dice
+import jsonrollabletable
 import settlement
 import charactergenerator as chargen
 
-class Fortress:
-    def __init__(self, is_minor=False):
+class Fortress(jsonrollabletable.JsonRollableTable):
+    def __init__(self, json_file, is_minor=False):
+
+        jsonrollabletable.JsonRollableTable.__init__(self, json_file)
+        
         self.fortress_type = ""
         self.fortress_ruler = ""
         self.fortress_protects = ""
@@ -34,48 +38,21 @@ class Fortress:
 
 
     def build(self, is_minor):
-        json_str = ""
-
-        with open("data/fortresstables.json", "r") as inFile:
-            json_str = inFile.read()
-
-        # The way the JSON is formatted, it creates a dictionary w/key of 'fortresstables'
-        # which will have a list of the tables (which are dictionaries themselves). I just want that list.
-        tables = json.loads(json_str)['fortresstables']
-
         # Type of fortress
         if is_minor:
             desired_type = 'Minor Fortress Type'
         else:
             desired_type = 'Major Fortress Type'
 
-        table = [tbl for tbl in tables if tbl['name'] == desired_type][0]
-        d = table['dtype']
-        self.fortress_type = table['entries'][str(sum(dice.roll('1d' + str(d))))]
+        self.fortress_type = self.roll_for_entry(desired_type)
+        self.fortress_ruler = self.roll_for_entry('Fortress Ruler')
+        self.fortress_protects = self.roll_for_entry('Protecting')
+        self.fortress_guards = self.roll_for_entry('Guards')
+        self.fortress_majordomo = self.roll_for_entry('Majordomo')
 
-        # Ruler of fortress
-        table = [tbl for tbl in tables if tbl['name'] == 'Fortress Ruler'][0]
-        d = table['dtype']
-        self.fortress_ruler = table['entries'][str(sum(dice.roll('1d' + str(d))))]
-
-        # What does fortress protect 
-        table = [tbl for tbl in tables if tbl['name'] == 'Protecting'][0]
-        d = table['dtype']
-        self.fortress_protects = table['entries'][str(sum(dice.roll('1d' + str(d))))]
-
-        # Who are guards of the fortress
-        table = [tbl for tbl in tables if tbl['name'] == 'Guards'][0]
-        d = table['dtype']
-        self.fortress_guards = table['entries'][str(sum(dice.roll('1d' + str(d))))]
-
-        # Who is majordomo of fortress
-        table = [tbl for tbl in tables if tbl['name'] == 'Majordomo'][0]
-        d = table['dtype']
-        self.fortress_majordomo = table['entries'][str(sum(dice.roll('1d' + str(d))))]
-
-        # How many floors/guards for fortress
+        # How many floors/guards for fortress - refer to base class data_tables to get entries
         if is_minor:
-            table = [tbl for tbl in tables if tbl['name'] == 'Minor Type Details'][0]
+            table = [tbl for tbl in self.data_tables if tbl['name'] == 'Minor Type Details'][0]
 
             n, s, mod = tuple(table['floors'].split(','))
             self.fortress_num_floors = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
@@ -83,7 +60,7 @@ class Fortress:
             n, s, mod = tuple(table['guards'].split(','))
             self.fortress_num_guards = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)
         else:
-            table = [tbl for tbl in tables if tbl['name'] == 'Major Type Details'][0]
+            table = [tbl for tbl in self.data_tables if tbl['name'] == 'Major Type Details'][0]
 
             n, s, mod = tuple(table['entries'][self.fortress_type]['floors'].split(','))
             self.fortress_num_floors = sum(dice.roll(str(n) + 'd' + str(s))) + int(mod)

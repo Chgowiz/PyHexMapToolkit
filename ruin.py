@@ -49,7 +49,7 @@ class Ruin(jsonrollabletable.JsonRollableTable):
         self.condition = self.roll_for_entry('Condition')
         self.backstory = self.roll_for_entry('Backstory')
         self.defenses = self.roll_for_entry('Defenses')
-        #self.contents = self.roll_for_entry('Contents')  # Contents is a d100 table with ranges. Need to code
+        #self.contents = self.roll_for_entry('Contents')  # TODO Contents is a d100 table with ranges. Need to code
         self.contents = "NOT YET IMPLEMENTED"
         self.primaryoccupants = self.roll_for_entry('Primary Occupants')
         self.majormonsters = self.roll_for_entry('Major Monster')
