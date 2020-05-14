@@ -56,15 +56,15 @@
     <Content Include="data\fortresstables.json">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="data\merchantsservices.csv" />
-    <Content Include="data\minsettlementtypes.csv" />
     <Content Include="data\minencountertypes.csv" />
     <Content Include="data\majencountertypes.csv" />
     <Content Include="data\npc.json">
       <SubType>Code</SubType>
     </Content>
     <Content Include="data\primaryterraintypes.csv" />
-    <Content Include="data\majsettlementtypes.csv" />
+    <Content Include="data\settlementtables.json">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

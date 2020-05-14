@@ -30,9 +30,9 @@ class Fortress(jsonrollabletable.JsonRollableTable):
                                                                                                             self.fortress_ruler, 
                                                                                                             self.fortress_majordomo)
 
-        # If fortress protects settlement - what are details of settlement (a village)
-        if self.fortress_protects == 'Village':
-            fortress_str += "\n\t" + str(settlement.Settlement(is_village = True))
+        ## If fortress protects settlement - what are details of settlement (a village)
+        #if self.fortress_protects == 'Village':
+        #    fortress_str += "\n\t" + str(settlement.Settlement(is_village = True))
 
         return fortress_str
 

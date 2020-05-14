@@ -1,0 +1,189 @@
+{
+  "settlementtables": [
+    {
+      "name": "Major Settlement Types",
+      "dtype": 10,
+      "entries": {
+        "1": "Camp,30,0",
+        "2": "Thorpe,40,.05",
+        "3": "Hamlet,100,.15",
+        "4": "Hamlet,100,.15",
+        "5": "Hamlet,100,.15",
+        "6": "Village,450,.25",
+        "7": "Village,450,.25",
+        "8": "Village,450,.25",
+        "9": "Village,450,.25",
+        "10": "Town,4999,.50"
+      }
+    },
+    {
+      "name": "Minor Settlement Types",
+      "dtype": 10,
+      "entries": {
+        "1": "Camp,30,0",
+        "2": "Thorpe,40,.05",
+        "3": "Thorpe,40,.05",
+        "4": "Hamlet,100,.15",
+        "5": "Hamlet,100,.15",
+        "6": "Hamlet,100,.15",
+        "7": "Hamlet,100,.15",
+        "8": "Village,450,.25",
+        "9": "Village,450,.25",
+        "10": "Village,450,.25"
+      }
+    },
+    {
+      "name": "Commerce",
+      "dtype": 10,
+      "entries": {
+        "1": "Food",
+        "2": "Food",
+        "3": "Livestock",
+        "4": "Livestock",
+        "5": "Textiles",
+        "6": "Services",
+        "7": "Labor",
+        "8": "Industry",
+        "9": "Minerals",
+        "10": "Unique Resource"
+      }
+    },
+    {
+      "name": "Government",
+      "dtype": 10,
+      "entries": {
+        "1": "Nobility",
+        "2": "Nobility",
+        "3": "Nobility",
+        "4": "Council",
+        "5": "Council",
+        "6": "Council",
+        "7": "Council",
+        "8": "Religious",
+        "9": "Merchant Guild",
+        "10": "Sole Leader"
+      }
+    },
+    {
+      "name": "Ruler",
+      "dtype": 10,
+      "entries": {
+        "1": "Noble",
+        "2": "Noble",
+        "3": "Military/Marshal",
+        "4": "Priests/esses",
+        "5": "Merchants",
+        "6": "Elected",
+        "7": "Elders",
+        "8": "Wealthy",
+        "9": "Family/Clans",
+        "10": "NPC"
+      }
+    },
+    {
+      "name": "Alignment",
+      "dtype": 10,
+      "entries": {
+        "1": "Lawful",
+        "2": "Lawful",
+        "3": "Lawful",
+        "4": "Lawful",
+        "5": "Neutral",
+        "6": "Neutral",
+        "7": "Neutral",
+        "8": "Neutral",
+        "9": "Neutral",
+        "10": "Chaotic"
+      }
+    },
+    {
+      "name": "Resources",
+      "dtype": 10,
+      "entries": {
+        "1": "Poor,-.15",
+        "2": "Poor,-.10",
+        "3": "Fair,0",
+        "4": "Fair,0",
+        "5": "Average,.05",
+        "6": "Average,.1",
+        "7": "Comfortable,.15",
+        "8": "Comfortable,.20",
+        "9": "Very Comfortable,.25",
+        "10": "Wealthy,.40"
+      }
+    },
+    {
+      "name": "Feature",
+      "dtype": 10,
+      "entries": {
+        "1": "Nothing",
+        "2": "Fortress",
+        "3": "Walls",
+        "4": "Fortress/Walls",
+        "5": "Temple",
+        "6": "Market",
+        "7": "Garden/Park",
+        "8": "Lake",
+        "9": "Art",
+        "10": "Famous Person"
+      }
+    },
+    {
+      "name": "Merchants",
+      "entries": {
+        "Bakers": 800,
+        "Barbers": 350,
+        "Bathers": 1900,
+        "Beer-Sellers": 1400,
+        "Blacksmiths": 1500,
+        "Bleachers": 2100,
+        "Bookbinders": 3000,
+        "Booksellers": 6300,
+        "Buckle Makers": 1400,
+        "Butchers": 1200,
+        "Carpenters": 550,
+        "Chandlers": 700,
+        "Chicken Butchers": 1000,
+        "Chirurgeon": 1700,
+        "Coopers": 700,
+        "Copyists": 2000,
+        "Cutlers": 2300,
+        "Fishmongers": 1200,
+        "Furriers": 250,
+        "Glovemakers": 2400,
+        "Harness-Makers": 2000,
+        "Hatmakers": 950,
+        "Hay Merchants": 2300,
+        "Illuminators": 3900,
+        "Inns": 2000,
+        "Jewelers": 400,
+        "Locksmiths": 1900,
+        "Magic-Shops": 2800,
+        "Maidservants": 250,
+        "Masons": 500,
+        "Mercers": 700,
+        "Old-Clothes": 400,
+        "Painters": 1500,
+        "Pastrycooks": 500,
+        "Plasterers": 1400,
+        "Pursemakers": 1100,
+        "Roofers": 1800,
+        "Ropemakers": 1900,
+        "Rugmakers": 2000,
+        "Saddlers": 1000,
+        "Scabbardmakers": 850,
+        "Sculptors": 2000,
+        "Shoemakers": 150,
+        "Spice Merchants": 1400,
+        "Tailors": 250,
+        "Tanners": 2000,
+        "Taverns/Restaurants": 400,
+        "Watercarriers": 850,
+        "Weavers": 600,
+        "Wine-Sellers": 900,
+        "Woodcarvers": 2400,
+        "Woodsellers": 2400
+      }
+    }
+  ]
+}

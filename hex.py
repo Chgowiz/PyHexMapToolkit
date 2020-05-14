@@ -6,12 +6,16 @@ import ruin
 class Hex:
     """description of class"""
 
-    def __init__(self, terrain_type = 'None'):
+    def __init__(self, tup_filenames, terrain_type = 'None'):
         self.major_encounter_dict = {}
         self.minor_encounter_dict = []
         self.major_encounter_types = {}
         self.minor_encounter_types = {}
         self.terrain_table = []
+
+        self.settlement_file = tup_filenames[0]
+        self.fortress_file = tup_filenames[1]
+        self.ruin_file = tup_filenames[2]
 
         self.terrain_type = terrain_type
         self.load_tables(terrain_type)
@@ -59,21 +63,26 @@ class Hex:
         # Determine if we have a major encounter
         maj_enc_dict = {}
 
-        if random.randint(1,100) <= int(self.terrain_table[0] * 100):
+        print("DEBUG - forcing to always have major encounter.")
+        if random.randint(1,1) <= int(self.terrain_table[0] * 100): #s/b randint(1,100)
         
             #Determine Major Encounter Type - randint(x,y) controls which type(s) get gen'd
-            maj_enc_type = self.major_encounter_types[str(random.randint(2,2))]
+            maj_enc_type = self.major_encounter_types[str(random.randint(1,1))]
 
             # Generate details about encounter
             maj_enc_details = ""
             if maj_enc_type == 'Settlement':
-                maj_enc_details = str(settlement.Settlement())
+                maj_enc_details = str(settlement.Settlement(self.settlement_file))
+                # If village has fort or keep, what are details?
+                print('DEBUG - If settlement has fort/keep - need to build.')
             elif maj_enc_type == 'Fortress':
-                maj_enc_details = str(fortress.Fortress("data/fortresstables.json"))
+                maj_enc_details = str(fortress.Fortress(self.fortress_file))
+                # If fortress protects settlement - what are details of settlement (a village)
+                print('DEBUG - If fortress protects settlement - need to build.')
             elif maj_enc_type == 'Ruin':
-                maj_enc_details = str(ruin.Ruin('data/ruintables.json'))
+                maj_enc_details = str(ruin.Ruin(self.ruin_file))
             else:
-                maj_enc_details = "Not yet defined."
+                maj_enc_details = maj_enc_type + " - Not yet defined. DEBUG"
 
             maj_enc_dict['Type'] = maj_enc_type
             maj_enc_dict['Details'] = maj_enc_details
@@ -101,9 +110,9 @@ class Hex:
                 # Generate details about encounter
                 min_enc_details = ""
                 if enc_dict['Type'] == 'Settlement':
-                    enc_dict['Details'] = str(settlement.Settlement(is_minor=True))
+                    enc_dict['Details'] = str(settlement.Settlement(self.settlement_file, is_minor=True))
                 elif enc_dict['Type'] == 'Fort':
-                    enc_dict['Details'] = str(fortress.Fortress("data/fortresstables.json", is_minor=True))
+                    enc_dict['Details'] = str(fortress.Fortress(self.fortress_file, is_minor=True))
                 elif enc_dict['Type'] == 'Ruin':
                     enc_dict['Details'] = "RUINS NOT YET DEFINED"
                 else:
