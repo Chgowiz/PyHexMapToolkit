@@ -5,7 +5,8 @@ import random
 import hex
 import HexPrint as hexp
 
-TABLE_FILENAMES = ('data/settlementtables.json',
+TABLE_FILENAMES = ('data/encounterstables.json',
+                   'data/settlementtables.json',
                    'data/fortresstables.json',
                    'data/ruintables.json')
 

@@ -1,103 +1,89 @@
 import random
+import json
+import jsonrollabletable
 import settlement
 import fortress
 import ruin
 
-class Hex:
-    """description of class"""
+class Hex(jsonrollabletable.JsonRollableTable):
 
     def __init__(self, tup_filenames, terrain_type = 'None'):
         self.major_encounter_dict = {}
-        self.minor_encounter_dict = []
-        self.major_encounter_types = {}
-        self.minor_encounter_types = {}
-        self.terrain_table = []
+        self.minor_encounters_dict = {}
 
-        self.settlement_file = tup_filenames[0]
-        self.fortress_file = tup_filenames[1]
-        self.ruin_file = tup_filenames[2]
+        self.encounters_file = tup_filenames[0]
+        self.settlement_file = tup_filenames[1]
+        self.fortress_file = tup_filenames[2]
+        self.ruin_file = tup_filenames[3]
 
         self.terrain_type = terrain_type
-        self.load_tables(terrain_type)
+        self.pct_major_encounter = 0.0
+        self.num_minor_encounters = 0
+
+        self.load_encounter_tables()
+
+        table = [tbl for tbl in self.data_tables if tbl['name'] == 'Terrain Types'][0]
+        self.pct_major_encounter, self.num_minor_encounters = [
+            ( float(d['pct_maj_encounter']), int(d['num_min_encounters']) ) 
+            for d in table['entries'] if d['terrain'] == self.terrain_type][0]
 
         self.build()
 
 
     def __str__(self):
-        return "Major Encounter\n{}\nMinor Encounters\n{}".format(str(self.major_encounter_dict),str(self.minor_encounter_dict))
+        return "Major Encounter\n{}\nMinor Encounters\n{}".format(str(self.major_encounter_dict),str(self.minor_encounters_dict))
 
 
     def build(self):
         self.major_encounter_dict = self.build_major_encounter()
-        self.minor_encounter_dict = self.build_minor_encounter()
+        self.minor_encounters_dict = self.build_minor_encounters()
 
 
-    def load_tables(self, terrain_type):
-        # was - majorEncounterTypes = {'1':('Settlement'), '2':('Fortress'), '3':('Ruin'), '4':('Monster'), '5':('Religious'), '6':('Natural')}
-        with open("data/majencountertypes.csv", "r") as inFile:
-            lines = inFile.readlines()
-        for line in lines[1:]:
-            values = line.strip().split(',')
-            self.major_encounter_types[values[0]] = (values[1])
+    def load_encounter_tables(self):
+        json_str = ""
+        with open(self.encounters_file, "r") as inFile:
+            json_str = inFile.read()
 
-        # was - minorEncounterTypes = {'1':('Settlement'),'2':('Fort'),'3':('Ruin'),'4':('Monster'),'5':('Wandering Monster'),'6':('Camp'),'7':('Way Station'),'8':('Beacon'),'9':('Construction Site'),'10':('Battlefield'),
-        #                       '11':('Isolated'),'12':('Sacred Ground'),'13':('Crossing'),'14':('Ancient Structure'),'15':('Hazard'),'16':('Treasure'),'17':('Contested'),'18':('Natural Resource'),'19':('Supernatural'),'20':('Gathering Place')}
-        with open("data/minencountertypes.csv", "r") as inFile:
-            lines = inFile.readlines()
-        for line in lines[1:]:
-            values = line.strip().split(',')
-            self.minor_encounter_types[values[0]] = (values[1])
-
-        primary_terrain_types = {}
-        # was - primaryTerrainTypes = {'Water':(.1,1),'Marsh':(.2,2),'Desert':(.2,2), 'Grassland': (.6,6), 'Forest':(.4,4), 'Hills/Rough':(.4,4), 'Mountains':(.2,2)}
-        with open("data/primaryterraintypes.csv", "r") as inFile:
-            lines = inFile.readlines()
-        for line in lines[1:]:
-            values = line.strip().split(',')
-            primary_terrain_types[values[0]] = float(values[1]), int(values[2])
-        
-        self.terrain_table = primary_terrain_types[terrain_type]
+        # The way the JSON is formatted, it creates a dictionary w/key of some value.
+        # I use dict.values to create a view object of the values of the dict.
+        # I then use iter to create an iterable, and next to get the first value - 
+        # which will have a list of the data tables (which are dictionaries themselves).
+        self.data_tables = next( iter( json.loads(json_str).values() ) )
 
 
     def build_major_encounter(self):
         # Determine if we have a major encounter
-        maj_enc_dict = {}
+        enc_dict = {}
 
-        print("DEBUG - forcing to always have major encounter.")
-        if random.randint(1,1) <= int(self.terrain_table[0] * 100): #s/b randint(1,100)
-        
-            #Determine Major Encounter Type - randint(x,y) controls which type(s) get gen'd
-            maj_enc_type = self.major_encounter_types[str(random.randint(1,1))]
+        if random.randint(1,100) <= int(self.pct_major_encounter * 100): # s/b randint(1,100)
+            enc_dict['Type'] = self.roll_for_entry('Major Encounter Types')
 
             # Generate details about encounter
-            maj_enc_details = ""
-            if maj_enc_type == 'Settlement':
-                maj_enc_details = str(settlement.Settlement(self.settlement_file))
+            if enc_dict['Type'] == 'Settlement':
+                enc_dict['Details'] = str(settlement.Settlement(self.settlement_file))
                 # If village has fort or keep, what are details?
                 print('DEBUG - If settlement has fort/keep - need to build.')
-            elif maj_enc_type == 'Fortress':
-                maj_enc_details = str(fortress.Fortress(self.fortress_file))
+            elif enc_dict['Type'] == 'Fortress':
+                enc_dict['Details'] = str(fortress.Fortress(self.fortress_file))
                 # If fortress protects settlement - what are details of settlement (a village)
                 print('DEBUG - If fortress protects settlement - need to build.')
-            elif maj_enc_type == 'Ruin':
-                maj_enc_details = str(ruin.Ruin(self.ruin_file))
+            elif enc_dict['Type'] == 'Ruin':
+                enc_dict['Details'] = str(ruin.Ruin(self.ruin_file))
             else:
-                maj_enc_details = maj_enc_type + " - Not yet defined. DEBUG"
+                enc_dict['Details'] = enc_dict['Type'] + " - Not yet defined. DEBUG"
 
-            maj_enc_dict['Type'] = maj_enc_type
-            maj_enc_dict['Details'] = maj_enc_details
         else:
-            maj_enc_dict = {'Type': "None", 'Details': "No Major Encounter"}
+            enc_dict = {'Type': "None", 'Details': "No Major Encounter"}
     
-        return maj_enc_dict 
+        return enc_dict 
     
 
-    def build_minor_encounter(self):
+    def build_minor_encounters(self):
         # Determine how many (if any) minor encounters - for each possibility, roll a d6. On a 1, we have a minor encounter!
         num_minor_encs = 0
-        min_enc_dict = {}
+        encounters_dict = {}
 
-        for x in range(1,self.terrain_table[1]):
+        for x in range(self.num_minor_encounters):
             if random.randint(1,6) == 1:
                 num_minor_encs += 1
 
@@ -105,10 +91,9 @@ class Hex:
                 enc_dict = {}
                 
                 #Determine Minor Encounter Type - randint(1,20) drives which type is chosen. 
-                enc_dict['Type'] = self.minor_encounter_types[str(random.randint(1,3))]
+                enc_dict['Type'] = self.roll_for_entry('Minor Encounter Types')
 
                 # Generate details about encounter
-                min_enc_details = ""
                 if enc_dict['Type'] == 'Settlement':
                     enc_dict['Details'] = str(settlement.Settlement(self.settlement_file, is_minor=True))
                 elif enc_dict['Type'] == 'Fort':
@@ -119,10 +104,10 @@ class Hex:
                     enc_dict['Details'] = "Not yet defined."
 
                 #Add the individual Minor Encounter to the hex's Minor Encounter Dictionary
-                min_enc_dict[str(num_minor_encs)] = enc_dict 
+                encounters_dict[str(num_minor_encs)] = enc_dict 
 
-        if not min_enc_dict:
-            min_enc_dict['0'] = {'Type':"None", 'Details': "No minor encounters."}
+        if not encounters_dict:
+            encounters_dict['0'] = {'Type':"None", 'Details': "No minor encounters."}
                 
-        return min_enc_dict
+        return encounters_dict
     

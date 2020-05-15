@@ -52,16 +52,16 @@
     <Folder Include="data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\encounterstables.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="data\ruintables.json" />
     <Content Include="data\fortresstables.json">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="data\minencountertypes.csv" />
-    <Content Include="data\majencountertypes.csv" />
     <Content Include="data\npc.json">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="data\primaryterraintypes.csv" />
     <Content Include="data\settlementtables.json">
       <SubType>Code</SubType>
     </Content>

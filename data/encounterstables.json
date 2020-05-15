@@ -1,0 +1,82 @@
+{
+  "encounterstables": [
+    {
+      "name": "Terrain Types",
+      "entries": [
+        {
+          "terrain": "Grassland",
+          "pct_maj_encounter": ".6",
+          "num_min_encounters": 6
+        },
+        {
+          "terrain": "Water",
+          "pct_maj_encounter": ".1",
+          "num_min_encounters": 1
+        },
+        {
+          "terrain": "Marsh",
+          "pct_maj_encounter": ".2",
+          "num_min_encounters": 2
+        },
+        {
+          "terrain": "Desert",
+          "pct_maj_encounter": ".2",
+          "num_min_encounters": 2
+        },
+        {
+          "terrain": "Forest",
+          "pct_maj_encounter": ".4",
+          "num_min_encounters": 4
+        },
+        {
+          "terrain": "Hills/Rough",
+          "pct_maj_encounter": ".4",
+          "num_min_encounters": 4
+        },
+        {
+          "terrain": "Mountains",
+          "pct_maj_encounter": ".2",
+          "num_min_encounters": 2
+        }
+      ]
+    },
+    {
+      "name": "Major Encounter Types",
+      "dtype": 6,
+      "entries": {
+        "1": "Settlement",
+        "2": "Fortress",
+        "3": "Ruin",
+        "4": "Monster",
+        "5": "Religious",
+        "6": "Natural"
+      }
+    },
+    {
+      "name": "Minor Encounter Types",
+      "dtype": 20,
+      "entries": {
+        "1": "Settlement",
+        "2": "Fort",
+        "3": "Ruin",
+        "4": "Monster",
+        "5": "Wandering Monster",
+        "6": "Camp",
+        "7": "Way Station",
+        "8": "Beacon",
+        "9": "Construction Site",
+        "10": "Battlefield",
+        "11": "Isolated",
+        "12": "Sacred Ground",
+        "13": "Crossing",
+        "14": "Ancient Structure",
+        "15": "Hazard",
+        "16": "Treasure",
+        "17": "Contested",
+        "18": "Natural Resource",
+        "19": "Supernatural",
+        "20": "Gathering Place"
+      }
+    }
+  ]
+}
